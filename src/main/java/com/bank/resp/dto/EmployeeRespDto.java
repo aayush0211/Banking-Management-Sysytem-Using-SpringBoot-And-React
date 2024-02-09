@@ -31,6 +31,7 @@ public class EmployeeRespDto {
 	 private String password;
 	 
 	 private long branchId;
+	 
 	 private String branchName;
 	 
 	 private String cardNumber;
@@ -40,4 +41,10 @@ public class EmployeeRespDto {
 		private LocalDate createdOn;
 		
 		private String imagePath;
+		
+		 private String street;
+         private String city;
+         private String state;
+         private String country;
+         private String zipCode;
 }

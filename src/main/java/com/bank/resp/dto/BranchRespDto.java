@@ -19,6 +19,7 @@ public class BranchRespDto {
              private String state;
              private String country;
              private String zipCode;
-          
+             private long empId=0;
+             private String empName="";
 }
 

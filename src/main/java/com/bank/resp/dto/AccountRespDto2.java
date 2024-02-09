@@ -2,28 +2,17 @@ package com.bank.resp.dto;
 
 import java.time.LocalDate;
 
-import org.hibernate.validator.constraints.Length;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.bank.customValidator.AgeConstraint;
-
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountRespDto {
-     private long id;
-	
+public class AccountRespDto2 {
+	 private long id;
+		
 	 private String firstName;
     
 	 private String lastName;
@@ -49,5 +38,9 @@ public class AccountRespDto {
 	 private LocalDate creationDate;
 	 
 	 private LocalDate updateDate;
-	 
+	 private String street;
+     private String city;
+     private String state;
+     private String country;
+     private String zipCode;
 }
