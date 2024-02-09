@@ -22,39 +22,53 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeReqDto {
-	 @NotBlank(message = "First name data must be required")
-     @Length(max = 30,min = 3)
-	 private String firstName;
-	 
-     @Length(max = 30)
-	 private String lastName;
-	 @NotBlank(message = "phone number data must be required")
-     @Length(max = 12)
-	 @Pattern(regexp = "^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[789]\\d{9}$")
-     private String mobileNumber;
-	 @DateTimeFormat(pattern = "dd/MM/yyyy")
-	 @NotNull
-	 @Past(message = "Date of Birth must be in the past")
-	 @AgeConstraint(value = 21, message = "Sorry!! You must be atleast 16 years old")
-	 private LocalDate dob;
-	 @NotBlank(message = "Gender must required")
-	 private String gender;
-	 @Email
-	 @NotBlank
-	 private String email;
-	 @Pattern(regexp = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/")
-	 private String password;
-	 @NotNull
-	 private long branchId;
-	 
-	 private String cardNumber;
-		@NotBlank(message = "Location as per aadhar card")
-		private String location;
-		@NotNull
-		@Past(message = "Aadhar card must be created in past")
-		private LocalDate createdOn;
-		
-		private String imagePath;
-	 
+	@NotBlank(message = "First name data must be required")
+	@Length(max = 30, min = 3)
+	private String firstName;
+
+	@Length(max = 30)
+	private String lastName;
+	@NotBlank(message = "phone number data must be required")
+	@Length(max = 12)
+	@Pattern(regexp = "^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[789]\\d{9}$")
+	private String mobileNumber;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotNull
+	@Past(message = "Date of Birth must be in the past")
+	@AgeConstraint(value = 21, message = "Sorry!! You must be atleast 16 years old")
+	private LocalDate dob;
+	@NotBlank(message = "Gender must required")
+	private String gender;
+	@Email
+	@NotBlank
+	private String email;
+	@Pattern(regexp = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/")
+	private String password;
+	@NotNull
+	private long branchId;
+
+	private String cardNumber;
+	@NotBlank(message = "Location as per aadhar card")
+	private String location;
+	@NotNull
+	@Past(message = "Aadhar card must be created in past")
+	private LocalDate createdOn;
+
+	private String imagePath;
+	@NotBlank(message = "street data must be required")
+	@Length(max = 30, min = 3)
+	private String street;
+	@NotBlank(message = "city data must be required")
+	@Length(max = 10, min = 3)
+	private String city;
+	@NotBlank(message = "state data must be required")
+	@Length(max = 10, min = 3)
+	private String state;
+	@NotBlank(message = "country data must be required")
+	@Length(max = 10, min = 3)
+	private String country;
+	@NotBlank
+	@Pattern(regexp = "^\\d{6}(?:[-\\s]\\d{4})?$")
+	private String zipCode;
 
 }

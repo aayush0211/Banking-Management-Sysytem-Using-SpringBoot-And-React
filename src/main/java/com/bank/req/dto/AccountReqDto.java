@@ -50,9 +50,20 @@ public class AccountReqDto {
 	 @NotNull
 	 private long branchId;
 	 
-	 @NotNull(message = "creation date should not be null")
-	 @DateTimeFormat(pattern = "dd/MM/yyyy")
-	 private LocalDate creationDate;
-	 private LocalDate updateDate;
+	 @NotBlank(message = "street data must be required")
+     @Length(max = 30,min = 3)
+     private String street;
+     @NotBlank(message = "city data must be required")
+     @Length(max = 10,min = 3)
+     private String city;
+     @NotBlank(message = "state data must be required")
+     @Length(max = 10,min = 3)
+     private String state;
+     @NotBlank(message = "country data must be required")
+     @Length(max = 10,min = 3)
+     private String country;
+     @NotBlank
+     @Pattern(regexp = "^\\d{6}(?:[-\\s]\\d{4})?$")
+     private String zipCode;
 	 
 }
