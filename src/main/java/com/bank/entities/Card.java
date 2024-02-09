@@ -42,4 +42,15 @@ public class Card extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "account_id", nullable = false)
 	private Account account;
+
+	public Card(String cardType, String cardNetwork) {
+		super();
+		this.cardNetwork = CardNetwork.valueOf(cardNetwork);
+		this.cardType = CardType.valueOf(cardNetwork);
+		this.creationDate = LocalDate.now();
+		this.expiryDate = LocalDate.of(creationDate.getYear()+10, creationDate.getMonth(),creationDate.getDayOfMonth());
+	
+	}
+	
+	
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -27,7 +28,7 @@ public class Branch extends BaseEntity {
 	@Column(name = "phone_number" , length = 15)
 	private String phoneNumber;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")
 	private Address address;
 	
@@ -45,5 +46,22 @@ public class Branch extends BaseEntity {
 		this.branchName = branchName;
 		this.phoneNumber = phoneNumber;
 	}
+	
+	public void addAccount(Account newAccount) {
+		this.accounts.add(newAccount);
+		newAccount.setBranch(this);
+	}
+	
+	public void removeAccount(Account account) {
+		this.accounts.remove(account);
+		account.setBranch(null);
+	}
+	
+	public void updateAccountBranch(Account account , Branch branch) {
+		this.accounts.remove(account);
+		branch.accounts.add(account);
+		account.setBranch(branch);
+	}
+	
 	
 }
