@@ -15,14 +15,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class transactionReqDto {
+public class TransactionReqDto {
 	@NotBlank
 	private String transactionType;
 	 @NotNull(message = "creation date should not be null")
 	 @DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate transactionDate;
 	 
-	 private double balance;
+	 private double amount;
 	 @NotNull
 	 private long accountNo;
 	 @NotNull

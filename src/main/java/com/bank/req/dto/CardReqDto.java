@@ -1,5 +1,6 @@
 package com.bank.req.dto;
 
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,5 +15,6 @@ public class CardReqDto {
 	private String cardNetwork;
 	@NotBlank
 	private String cardType;
-	
+	@Max(value=50000,message = "Value exceeded. Must be equal to or less than 50000")
+	private double maxTransferAmount = 10000.00;
 }

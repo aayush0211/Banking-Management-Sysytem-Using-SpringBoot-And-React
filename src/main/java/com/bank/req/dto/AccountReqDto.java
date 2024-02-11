@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.bank.customValidator.AgeConstraint;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
@@ -49,6 +50,8 @@ public class AccountReqDto {
 	 private String accountType;
 	 @NotNull
 	 private long branchId;
+	 @Max(value = 25000,message = "Max one time transafer is 250000 only")
+	 private double maxTransactionAmount = 10000.00;
 	 
 	 @NotBlank(message = "street data must be required")
      @Length(max = 30,min = 3)
