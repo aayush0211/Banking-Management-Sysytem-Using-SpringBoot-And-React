@@ -36,7 +36,7 @@ public class Branch extends BaseEntity {
 	@JoinColumn(name = "emp_id" , referencedColumnName = "id")
 	private Employee employee;
 	
-	@OneToMany(mappedBy = "branch" , cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "branch" , cascade = CascadeType.MERGE, orphanRemoval = true)
 	private List<Account> accounts = new ArrayList<>();
 
 	
@@ -47,20 +47,21 @@ public class Branch extends BaseEntity {
 		this.phoneNumber = phoneNumber;
 	}
 	
+	
 	public void addAccount(Account newAccount) {
 		this.accounts.add(newAccount);
-		newAccount.setBranch(this);
+		newAccount.addBranch(this);
 	}
 	
 	public void removeAccount(Account account) {
 		this.accounts.remove(account);
-		account.setBranch(null);
+		account.addBranch(null);
 	}
 	
 	public void updateAccountBranch(Account account , Branch branch) {
 		this.accounts.remove(account);
 		branch.accounts.add(account);
-		account.setBranch(branch);
+		account.addBranch(branch);
 	}
 	
 	

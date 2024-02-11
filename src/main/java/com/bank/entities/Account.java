@@ -15,13 +15,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "accounts")
+@Table(name = "users_accounts")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,6 +35,7 @@ public class Account extends BaseEntity2 {
 	@JoinColumn(name = "address_id")
 	private Address address;
 	
+	@Setter(value = AccessLevel.NONE)
 	@ManyToOne
 	@JoinColumn(name = "branch_id")
 	private Branch branch;
@@ -44,6 +46,8 @@ public class Account extends BaseEntity2 {
 	
 	@Column(length = 30)
 	private double balance;
+	@Column(name = "max_transaction_amount")
+	private double maxTransactionAmount;
 	@Column(name  = "creation_date" , length = 20)
 	private LocalDate creationDate;
 	@Column(name  = "update_date" , length = 20)
@@ -57,27 +61,25 @@ public class Account extends BaseEntity2 {
 	
 	
 	@OneToMany(mappedBy = "receiverAccountNo" , cascade = CascadeType.ALL , orphanRemoval = true)
-	private List<Transaction> creditTransaction = new ArrayList<>();
-	@OneToMany(mappedBy = "accountNo" , cascade = CascadeType.ALL , orphanRemoval = true)
-	private List<Transaction> debitTransaction = new ArrayList<>();
-	
-	public void addCreditedTransaction(Transaction t) {
-		this.creditTransaction.add(t);
-		t.setReceiverAccountNo(this);
+	private List<Transaction> transactions = new ArrayList<>();
+		
+	public void addBranch(Branch branch) {
+		this.branch = branch;
 		
 	}
-	public void removeCreditedTransaction(Transaction t) {
-		this.creditTransaction.remove(t);
-		t.setReceiverAccountNo(null);
-	}
-	public void addDebitTransaction(Transaction t) {
-		this.debitTransaction.add(t);
+	
+	public void addTransactions(Transaction t, Account receiverAccount) {
+		this.transactions.add(t);
+		t.setReceiverAccountNo(receiverAccount);
 		t.setAccountNo(this);
 	}
-	public void removeDebitTransaction(Transaction t) {
-		this.debitTransaction.remove(t);
+	
+	public void removeTransactions(Transaction t, Account receiverAccount) {
+		this.transactions.remove(t);
+		t.setReceiverAccountNo(null);
 		t.setAccountNo(null);
 	}
+	
 
 	public void addCard(Card c) {
 		this.cards.add(c);

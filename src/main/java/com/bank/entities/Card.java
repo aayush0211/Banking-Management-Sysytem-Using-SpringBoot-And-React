@@ -38,6 +38,8 @@ public class Card extends BaseEntity {
 
 	@Column
 	private int CVV;
+	@Column(name = "max_transaction_amount")
+	private double maxTransactionAmount;
 	
 	@ManyToOne
 	@JoinColumn(name = "account_id", nullable = false)
