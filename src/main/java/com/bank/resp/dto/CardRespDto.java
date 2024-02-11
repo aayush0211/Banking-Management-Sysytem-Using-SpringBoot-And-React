@@ -22,4 +22,6 @@ public class CardRespDto {
 	
 	private String accountHolderName;
 	
+	private double maxTransferAmount;
+	
 }

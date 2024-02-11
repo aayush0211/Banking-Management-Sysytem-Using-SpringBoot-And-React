@@ -37,6 +37,8 @@ public class AccountRespDto2 {
 	 
 	 private LocalDate creationDate;
 	 
+	 private String status;
+	 
 	 private LocalDate updateDate;
 	 private String street;
      private String city;
