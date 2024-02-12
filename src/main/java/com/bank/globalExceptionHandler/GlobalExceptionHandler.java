@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.bank.custom.exception.BranchNotFoundException;
+import com.bank.custom.exception.InvalidPasswordException;
 import com.bank.custom.exception.LimitExceededException;
 import com.bank.response.ErrorResponse;
 
@@ -31,6 +32,13 @@ public class GlobalExceptionHandler {
         
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE, ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE);
+    }
+    
+    @ExceptionHandler(InvalidPasswordException.class)
+    public ResponseEntity<Object> invalidPasswordException(InvalidPasswordException ex) {
+        
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.FORBIDDEN, ex.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.FORBIDDEN);
     }
 
    
