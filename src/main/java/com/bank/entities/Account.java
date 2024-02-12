@@ -43,6 +43,8 @@ public class Account extends BaseEntity2 {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "account_type" , length = 20)
 	private AccountType accountType;
+    
+	
 	
 	@Column(length = 30)
 	private double balance;

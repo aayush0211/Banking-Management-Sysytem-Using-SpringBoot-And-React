@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
@@ -29,7 +31,8 @@ public class BaseEntity2 extends BaseEntity {
 	private String password;
 	@Column(name = "mobile_number" , length = 30)
 	private String mobileNumber;
-	
+	@Enumerated(EnumType.STRING)
+	private UserRole role;
 	@Embedded
 	@JoinColumn(name = "aadhar_number")
 	private AadharCard aadharCard;
