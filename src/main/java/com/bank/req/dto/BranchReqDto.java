@@ -17,7 +17,7 @@ import lombok.ToString;
 @ToString
 public class BranchReqDto {
 	 @NotBlank(message = "Branch name data must be required")
-     @Length(max = 10,min = 3)
+     @Length(max = 30,min = 3)
 	 private String branchName;
 	 @NotBlank(message = "phone number data must be required")
      @Length(max = 12)
@@ -28,13 +28,13 @@ public class BranchReqDto {
      @Length(max = 30,min = 3)
      private String street;
      @NotBlank(message = "city data must be required")
-     @Length(max = 10,min = 3)
+     @Length(max = 30,min = 3)
      private String city;
      @NotBlank(message = "state data must be required")
-     @Length(max = 10,min = 3)
+     @Length(max = 30,min = 3)
      private String state;
      @NotBlank(message = "country data must be required")
-     @Length(max = 10,min = 3)
+     @Length(max = 30,min = 3)
      private String country;
      @NotBlank
      @Pattern(regexp = "^\\d{6}(?:[-\\s]\\d{4})?$")

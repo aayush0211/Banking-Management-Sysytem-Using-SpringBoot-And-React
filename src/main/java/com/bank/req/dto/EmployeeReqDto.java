@@ -48,13 +48,13 @@ public class EmployeeReqDto {
 	private long branchId;
 
 	private String cardNumber;
-	@NotBlank(message = "Location as per aadhar card")
+	//@NotBlank(message = "Location as per aadhar card")
 	private String location;
-	@NotNull
-	@Past(message = "Aadhar card must be created in past")
+	//@NotNull
+	//@Past(message = "Aadhar card must be created in past")
 	private LocalDate createdOn;
 
-	private String imagePath;
+	//private MultipartFile image;
 	@NotBlank(message = "street data must be required")
 	@Length(max = 30, min = 3)
 	private String street;

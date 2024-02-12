@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bank.customValidator.AgeConstraint;
 
@@ -48,6 +49,8 @@ public class AccountReqDto {
 	 private double balance;
 	 @NotBlank(message =  "Account type should not be left blank")
 	 private String accountType;
+	 
+	 private MultipartFile image;
 	 @NotNull
 	 private long branchId;
 	 @Max(value = 25000,message = "Max one time transafer is 250000 only")
