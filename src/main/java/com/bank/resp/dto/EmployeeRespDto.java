@@ -2,6 +2,8 @@ package com.bank.resp.dto;
 
 import java.time.LocalDate;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,4 +49,5 @@ public class EmployeeRespDto {
          private String state;
          private String country;
          private String zipCode;
+         private MultipartFile image;
 }

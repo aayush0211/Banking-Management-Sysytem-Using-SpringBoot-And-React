@@ -26,8 +26,6 @@ public class AccountRespDto {
 	 
 	 private String email;
 	 
-	 private String password;
-	 
 	 private double balance;
 	
 	 private String accountType;
