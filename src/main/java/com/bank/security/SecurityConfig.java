@@ -24,13 +24,16 @@ public class SecurityConfig{
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
+    	System.out.println("in security config");
     	http.csrf().disable()
         .authorizeRequests()
-        .requestMatchers("/rest/auth/**").permitAll()
+        .requestMatchers("/signin/**").permitAll()
         .anyRequest().authenticated()
         .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and().addFilterBefore(authenticationFilter,UsernamePasswordAuthenticationFilter.class);
 
+    	
+    	
 return http.build();
     }
 

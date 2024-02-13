@@ -22,6 +22,7 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String email) throws BranchNotFoundException {
 		// invoke dao's method to get uer details form DB
+		System.out.println("in loadUserByUsername of CustomDetailsServiceImpl");
 		Account user = accountDao.findByEmail(email)
 				.orElseThrow(() ->
 				new BranchNotFoundException("Invalid Email !!!!!"));

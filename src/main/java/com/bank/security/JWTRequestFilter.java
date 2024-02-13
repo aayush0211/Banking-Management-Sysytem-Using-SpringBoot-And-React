@@ -35,7 +35,7 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		Map<String, Object> errorDetails = new HashMap<>();
-
+          System.out.println("in dofilterInternal of JWTRequestFilter");
         try {
             String accessToken = utils.resolveToken(request);
             if (accessToken == null ) {
