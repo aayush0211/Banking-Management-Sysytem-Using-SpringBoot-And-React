@@ -24,7 +24,7 @@ public class SigninRequest {
 	@Email(message = "Invalid email format")
 	private String email;
 //	@NotBlank
-	 @Pattern(regexp = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/")
+	// @Pattern(regexp = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/")
 	@Length(min = 3,max=20,message = "Invalid password length")
 	private String password;
 }
