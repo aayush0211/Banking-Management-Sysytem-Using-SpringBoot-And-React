@@ -9,11 +9,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
+
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,10 +30,8 @@ import lombok.Setter;
 public class Account extends BaseEntity2 {
 	
 	
-
-	@OneToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id")
-	private Address address;
+     
+   
 	
 	@Setter(value = AccessLevel.NONE)
 	@ManyToOne
@@ -62,26 +60,41 @@ public class Account extends BaseEntity2 {
 	private List<Card> cards = new ArrayList<>();
 	
 	
-	@OneToMany(mappedBy = "receiverAccountNo" , cascade = CascadeType.ALL , orphanRemoval = true)
-	private List<Transaction> transactions = new ArrayList<>();
+	@OneToMany(mappedBy = "accountNo" , cascade = CascadeType.ALL , orphanRemoval = false)
+	private List<Transaction> creditTransactions = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "receiverAccountNo" , cascade = CascadeType.ALL , orphanRemoval = false)
+	private List<Transaction> debitTransactions = new ArrayList<>();
 		
 	public void addBranch(Branch branch) {
 		this.branch = branch;
 		
 	}
 	
-	public void addTransactions(Transaction t, Account receiverAccount) {
-		this.transactions.add(t);
-		t.setReceiverAccountNo(receiverAccount);
+	public void addCreditTransactions(Transaction t) {
+		this.creditTransactions.add(t);
+		
+		//t.setReceiverAccountNo(receiverAccount);
+		t.setReceiverAccountNo(this);
+		
+	}
+	
+	public void removeCreditTransactions(Transaction t) {
+		this.creditTransactions.remove(t);
+		//t.setReceiverAccountNo(null);
+		t.setReceiverAccountNo(this);
+	}
+	public void addDebitTransaction(Transaction t)
+	{
+		this.debitTransactions.add(t);
+		t.setAccountNo(this);
+		
+	}
+	public void removeDeditTransactions(Transaction t) {
+		this.debitTransactions.remove(t);
+		//t.setReceiverAccountNo(null);
 		t.setAccountNo(this);
 	}
-	
-	public void removeTransactions(Transaction t, Account receiverAccount) {
-		this.transactions.remove(t);
-		t.setReceiverAccountNo(null);
-		t.setAccountNo(null);
-	}
-	
 
 	public void addCard(Card c) {
 		this.cards.add(c);
@@ -94,7 +107,16 @@ public class Account extends BaseEntity2 {
 	@Override
 	public String toString() {
 		
-		return "Account  [id = " +super.getId()+" branch=" + branch + ", accountType=" + accountType + ", address=" + address + ", balance="
+		return "Account  [id = " +super.getId()+" branch=" + branch + ", accountType=" + accountType + ", address=" + this.getAddress() + ", balance="
 				+ balance + ", creationDate=" + creationDate + ", updateDate=" + updateDate + "]";
+	}
+	
+	public void creditMoney(double amt)
+	{
+		this.balance = this.balance+amt;
+	}
+	public void debitMoney(double amt)
+	{
+		this.balance = this.balance-amt;
 	}
 }

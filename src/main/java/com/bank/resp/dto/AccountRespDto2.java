@@ -2,8 +2,9 @@ package com.bank.resp.dto;
 
 import java.time.LocalDate;
 
-import org.springframework.web.multipart.MultipartFile;
-
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,12 +41,16 @@ public class AccountRespDto2 {
 	 private LocalDate creationDate;
 	 
 	 private String status;
-	 
+	 private String cardNumber;
+	 	
+	 	private String location;
+	 	
+	 	private LocalDate createdOn;
 	 private LocalDate updateDate;
 	 private String street;
      private String city;
      private String state;
      private String country;
      private String zipCode;
-     private MultipartFile image;
+     private byte[] image;
 }

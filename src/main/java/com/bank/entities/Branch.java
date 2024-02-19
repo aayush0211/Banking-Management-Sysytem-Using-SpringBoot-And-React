@@ -5,12 +5,13 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,15 +29,20 @@ public class Branch extends BaseEntity {
 	@Column(name = "phone_number" , length = 15)
 	private String phoneNumber;
 	
-	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@Embedded
 	@JoinColumn(name = "address_id")
 	private Address address;
+	
+//	@Setter(value = AccessLevel.NONE)
+//	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+//	@JoinColumn(name = "address_id")
+//	private Address address;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "emp_id" , referencedColumnName = "id")
 	private Employee employee;
 	
-	@OneToMany(mappedBy = "branch" , cascade = CascadeType.MERGE, orphanRemoval = true)
+	@OneToMany(mappedBy = "branch" , cascade = CascadeType.MERGE)
 	private List<Account> accounts = new ArrayList<>();
 
 	
@@ -64,5 +70,9 @@ public class Branch extends BaseEntity {
 		account.addBranch(branch);
 	}
 	
+	public void addAddress(Address adr)
+	{
+		this.address=adr;
+	}
 	
 }

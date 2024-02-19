@@ -11,6 +11,7 @@ import com.bank.entities.Account;
 
 
 
+@SuppressWarnings("serial")
 public class CustomUserDetails implements UserDetails {
 	private final Account users_account;
 	

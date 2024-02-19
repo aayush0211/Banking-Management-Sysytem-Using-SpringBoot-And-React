@@ -40,6 +40,14 @@ public class Transaction extends BaseEntity{
 		return "Transaction  [id = " + super.getId() + "accountNo=" + accountNo + ", receiverAccountNo=" + receiverAccountNo + ", amount=" + amount
 				+ ", transactionType=" + transactionType + ", transactionDate=" + transactionDate + "]";
 	}
+
+	public Transaction(double amount, TransactionType transactionType, LocalDate transactionDate, Account accountNo) {
+		super();
+		this.amount = amount;
+		this.transactionType = transactionType;
+		this.transactionDate = transactionDate;
+		this.accountNo = accountNo;
+	}
 	
 	
 	

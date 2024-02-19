@@ -42,7 +42,7 @@ public class JwtUtils {
 	Claims claims = Jwts.claims().setSubject(LogInResp.getEmail());
 	claims.put("firstName", LogInResp.getFirstName());
 	claims.put("firstName", LogInResp.getLastName());
-	claims.put("role", LogInResp.getRole());
+	//claims.put("role", LogInResp.getRole());
 	Date tokenCreateTime = new Date();
 	Date tokenValidity = new Date(tokenCreateTime.getTime()+ TimeUnit.MINUTES.toMillis(accessTokenValidity));
 	
@@ -106,6 +106,7 @@ public class JwtUtils {
 	// Accepts Collection<GrantedAuthority> n rets comma separated list of it's
 	// string form
 
+	@SuppressWarnings("unused")
 	private String getAuthoritiesInString(Collection<? extends GrantedAuthority> authorities) {
 		String authorityString = authorities.stream().
 				map(authority -> authority.getAuthority())

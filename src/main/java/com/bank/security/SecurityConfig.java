@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -18,7 +19,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig{
 	
 	@Autowired
-    private JWTRequestFilter authenticationFilter;  
+    private JWTRequestFilter authenticationFilter; 
+	@Bean
+	 public BCryptPasswordEncoder bCryptPasswordEncoder() {
+	     return new BCryptPasswordEncoder();
+	 }
 	
 
     @Bean
@@ -27,7 +32,7 @@ public class SecurityConfig{
     	System.out.println("in security config");
     	http.csrf().disable()
         .authorizeRequests()
-        .requestMatchers("/signin/**").permitAll()
+        .requestMatchers("/signin/**","/signup/**","/swagger*/**").permitAll()
         .anyRequest().authenticated()
         .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and().addFilterBefore(authenticationFilter,UsernamePasswordAuthenticationFilter.class);

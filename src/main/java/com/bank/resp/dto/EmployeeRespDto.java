@@ -2,7 +2,6 @@ package com.bank.resp.dto;
 
 import java.time.LocalDate;
 
-import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,13 +40,12 @@ public class EmployeeRespDto {
 		private String location;
 		
 		private LocalDate createdOn;
-		
-		private String imagePath;
+
 		
 		 private String street;
          private String city;
          private String state;
          private String country;
          private String zipCode;
-         private MultipartFile image;
+         private byte[] image;
 }

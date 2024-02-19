@@ -4,11 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,13 +19,16 @@ import com.bank.req.dto.BranchReqDto;
 import com.bank.resp.dto.AddressDto;
 import com.bank.service.BranchService;
 
+import jakarta.validation.Valid;
+
 
 
 
 
 @RestController
 @RequestMapping("/branches")
-@Validated
+@CrossOrigin(origins = "http//localhost:3000")
+@Valid
 public class BranchController {
 	
 	@Autowired
@@ -39,11 +42,7 @@ public class BranchController {
 	return ResponseEntity.status(HttpStatus.OK).body(branchService.getAllBranches());
 	}
 	
-	@PostMapping
-	public ResponseEntity<?> addBranch(@RequestBody BranchReqDto newBranch){
-		AddressDto newAddress = mapper.map(newBranch, AddressDto.class);  
-		return ResponseEntity.status(HttpStatus.CREATED).body(branchService.addBranch(newBranch, newAddress));
-	}
+	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> updateBranch(@RequestBody BranchReqDto branch,@PathVariable long id){
 		AddressDto address = mapper.map(branch, AddressDto.class);

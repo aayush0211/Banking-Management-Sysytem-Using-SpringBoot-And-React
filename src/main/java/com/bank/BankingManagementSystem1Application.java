@@ -27,5 +27,7 @@ public class BankingManagementSystem1Application {
 		return modelMapper;//configured model mapper instance reted to SC
 
 	}
+	
+	 
 
 }

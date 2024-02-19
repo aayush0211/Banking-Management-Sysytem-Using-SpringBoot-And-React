@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bank.custom.exception.BranchNotFoundException;
-import com.bank.dao.AddressDao;
 import com.bank.dao.BranchDao;
 import com.bank.entities.Address;
 import com.bank.entities.Branch;
@@ -26,18 +25,18 @@ public class BranchServiceImp implements BranchService {
 
 	@Autowired
 	private BranchDao branchDao;
-	@Autowired
-	private AddressDao addrDao;
 	
 	@Autowired
 	private ModelMapper mapper;
 
 	@Override
-	public String addBranch(BranchReqDto newBranch, AddressDto newBranchAddress) {
-		 Address branchAddress = mapper.map(newBranchAddress, Address.class);
+	public String addBranch(BranchReqDto newBranch) {
+		
 		 Branch branch = mapper.map(newBranch, Branch.class);
-		 branch.setAddress(branchAddress);
+		 Address newAddress = mapper.map(newBranch, Address.class); 
+		 branch.addAddress(newAddress);
 		  branch.setEmployee(null);
+		  
 		 branchDao.save(branch);
 		return "Successfully Added Branch of id: "+ branch.getId();
 	}
@@ -58,7 +57,7 @@ public class BranchServiceImp implements BranchService {
 		existBranch.setBranchName(validBranch.getBranchName());
 		existBranch.setPhoneNumber(validBranch.getPhoneNumber());
 		//existBranch.setEmployee(validBranch.getEmployee());
-		return "Successfully Updated Branch of id: "+ validBranch.getId();
+		return "Successfully Updated Branch of id: "+ id;
 	}
 
 	@Override
@@ -66,14 +65,24 @@ public class BranchServiceImp implements BranchService {
 			List<BranchRespDto> lists = new ArrayList<>();
 		 List<Branch> branchLists = branchDao.findAll();
 		 for(Branch p : branchLists) {
-			 Address addr = addrDao.findById(p.getAddress().getId()).orElseThrow();
+//			 Address addr = p.getAddress();
 			BranchRespDto vBranch =  mapper.map(p, BranchRespDto.class);
-			vBranch.setCity(addr.getCity());
-			vBranch.setCountry(addr.getCountry());
-			vBranch.setStreet(addr.getStreet());
-			vBranch.setZipCode(addr.getZipCode());
-			vBranch.setState(addr.getState());
-		    lists.add(vBranch);
+//			vBranch.setCity(addr.getCity());
+//			vBranch.setCountry(addr.getCountry());
+//			vBranch.setStreet(addr.getStreet());
+//			vBranch.setZipCode(addr.getZipCode());
+//			vBranch.setState(addr.getState());
+			
+			if(p.getEmployee() !=null) {
+			vBranch.setEmpId(p.getEmployee().getId());
+			vBranch.setEmpName(p.getEmployee().getFirstName().concat(" "+p.getEmployee().getLastName()));
+			}
+			else {
+				vBranch.setEmpId(0);
+				vBranch.setEmpName("No employees assigned");
+			}
+			lists.add(vBranch);
+			
 		 }
 		 return lists;
 	}
@@ -88,6 +97,14 @@ public class BranchServiceImp implements BranchService {
 		vBranch.setStreet(branch.getAddress().getStreet());
 		vBranch.setZipCode(branch.getAddress().getZipCode());
 		vBranch.setState(branch.getAddress().getState());
+		if(branch.getEmployee()!=null) {
+		vBranch.setEmpId(branch.getEmployee().getId());
+		vBranch.setEmpName(branch.getEmployee().getFirstName().concat(" "+branch.getEmployee().getLastName()));
+		}
+		else {
+			vBranch.setEmpId(0);
+			vBranch.setEmpName("No employees assigned");
+		}
 		return vBranch;
 	}
 

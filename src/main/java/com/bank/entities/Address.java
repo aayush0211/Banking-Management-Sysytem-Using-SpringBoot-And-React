@@ -2,23 +2,21 @@ package com.bank.entities;
 
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.Embeddable;
 
-
-
-import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
-@Table(name = "Address")
+@Embeddable
+//@Entity
+//@Table(name = "address")
 @NoArgsConstructor
 @Getter
 @Setter
 @ToString
-public class Address extends BaseEntity {
+public class Address  {
 	@Column(length = 50)
 	private String street;
 	@Column(name = "city", length = 30)

@@ -1,6 +1,5 @@
 package com.bank.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bank.resp.dto.AddressDto;
 import com.bank.response.Apiresponse;
-import com.bank.service.AddressService;
 
 import jakarta.validation.constraints.NotNull;
 
@@ -18,9 +16,7 @@ import jakarta.validation.constraints.NotNull;
 @RequestMapping("/address")
 @Validated
 public class AddressController {
-	
-	@Autowired
-	private AddressService addrService;
+
 	
 	@PostMapping("/{empId}")
 	public Apiresponse assignAddressToEmp(@PathVariable 

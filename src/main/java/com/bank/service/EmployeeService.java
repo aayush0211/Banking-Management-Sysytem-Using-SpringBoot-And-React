@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.bank.entities.Employee;
 import com.bank.req.dto.EmployeeReqDto;
-
+import com.bank.req.dto.SigninRequest;
 import com.bank.resp.dto.EmployeeRespDto;
 
 public interface EmployeeService {
@@ -19,5 +19,11 @@ public interface EmployeeService {
 	
 	String updateEmployee(long id,EmployeeReqDto employee);
 	
+	String changePassword(long id,SigninRequest employee);
+	
 	Employee getEmployeeByBranchId(long branchId);
+	
+	  
+	    
+	  
 }

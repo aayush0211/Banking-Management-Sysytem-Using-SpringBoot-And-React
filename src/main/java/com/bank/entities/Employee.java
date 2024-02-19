@@ -2,7 +2,6 @@ package com.bank.entities;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -19,7 +18,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = {"branch" ,"address"} , callSuper = true)
+@ToString(exclude = {"branch"} , callSuper = true)
 public class Employee extends BaseEntity2{
 	
 	@Setter(value = AccessLevel.NONE)
@@ -27,9 +26,9 @@ public class Employee extends BaseEntity2{
 	@JoinColumn(name = "branch_id")
 	private Branch branch;
 	
-	@OneToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id")
-	private Address address;
+//	@OneToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE, orphanRemoval = true)
+//	@JoinColumn(name = "address_id")
+//	private Address address;
 	
 	public void addBranch(Branch branche) {
 		this.branch = branche;
@@ -40,13 +39,18 @@ public class Employee extends BaseEntity2{
 		branche.setEmployee(null);
 	}
 	
-	public void addAddress(Address addr) {
-		this.address = addr; 
-	}
+//	public void addAddress(Address addr) {
+//		this.address = addr; 
+//	}
 	
 	public void updateEmployeeBranch(Branch branche) {
 		this.branch.setEmployee(null);
 		this.branch = branche;
 		branche.setEmployee(this);
 	}
+//	public void updateAddress(Address address) {
+//		
+//		this.address = address;
+//		
+//	}
 }

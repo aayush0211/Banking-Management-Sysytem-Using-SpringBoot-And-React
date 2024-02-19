@@ -2,10 +2,10 @@ package com.bank.service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+
 
 import com.bank.custom.exception.BranchNotFoundException;
-import com.bank.entities.Branch;
+
 import com.bank.req.dto.BranchReqDto;
 import com.bank.resp.dto.AddressDto;
 import com.bank.resp.dto.BranchRespDto;
@@ -13,7 +13,7 @@ import com.bank.resp.dto.BranchRespDto;
 
 public interface BranchService {
        
-	String addBranch(BranchReqDto newBranch , AddressDto newBranchAddress);
+	String addBranch(BranchReqDto newBranch);
 	
 	String updateBranch(BranchReqDto branch , AddressDto branchAddress, Long id);
 	

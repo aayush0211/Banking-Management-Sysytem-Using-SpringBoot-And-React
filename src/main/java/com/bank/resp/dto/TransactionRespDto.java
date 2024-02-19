@@ -2,16 +2,23 @@ package com.bank.resp.dto;
 
 import java.time.LocalDate;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import com.bank.entities.TransactionType;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class TransactionRespDto {
 	
 	private long id;
 
-	private String transactionType;
+	private TransactionType transactionType;
 	private LocalDate transactionDate;
 	 
 	 private double amount;

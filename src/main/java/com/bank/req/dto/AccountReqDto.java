@@ -71,5 +71,13 @@ public class AccountReqDto {
      @NotBlank
      @Pattern(regexp = "^\\d{6}(?:[-\\s]\\d{4})?$")
      private String zipCode;
+     @NotBlank(message  = "Must be filled") 
+ 	@Pattern(regexp = "^[2-9]{1}[0-9]{3}\\s[0-9]{4}\\s[0-9]{4}$")
+ 	private String cardNumber;
+ 	@NotBlank(message = "Location as per aadhar card")
+ 	private String location;
+ 	@NotNull
+ 	@Past(message = "Aadhar card must be created in past")
+ 	private LocalDate createdOn;
 	 
 }

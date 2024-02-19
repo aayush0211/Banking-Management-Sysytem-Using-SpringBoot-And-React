@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bank.customValidator.AgeConstraint;
 
@@ -70,5 +71,5 @@ public class EmployeeReqDto {
 	@NotBlank
 	@Pattern(regexp = "^\\d{6}(?:[-\\s]\\d{4})?$")
 	private String zipCode;
-
+	private MultipartFile image;
 }
