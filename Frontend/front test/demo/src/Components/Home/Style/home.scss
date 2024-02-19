@@ -1,0 +1,146 @@
+@import "./variables";
+
+.home_cls {
+    // position: relative;
+    z-index: 1;
+    overflow-x: hidden;
+    padding-top: 80px;
+}
+.home-cntr {
+    // background-color: yellow;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+
+    .home_txt {
+        // background-color: red;
+        line-height: 4rem;
+
+        .greetings {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0px;
+        }
+
+        .name_logo_bx {
+            // margin-right: 30px;
+            display: flex;
+            justify-content: left;
+            margin-bottom: 20px;
+            img {
+                height: 100px;
+                width: 500px;
+                
+            }
+        }
+
+        p {
+            font-family: "Montserrat", "Arial", sans-serif;
+            font-size: 18px;
+            /* color: var(--black-900); */
+            font-weight: 600;
+            line-height: 1.6rem;
+        }
+
+        h3
+        {
+            margin: 25px 0px;
+            font-size: 16px;
+            line-height: 1.4rem;
+        }
+
+        .features {
+            // background-color: blue;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            gap: 5px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            transition: all 0.2s ease-in-out;
+
+            .ft {
+                background-color: #6580da;
+                border-radius: 40px;
+                padding: 7px 10px 0px;
+                display: flex;
+                transition: all 0.2s ease-in-out;
+                transform: scale(0.9);
+                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+                &:hover {
+                    background-color: #62bbe4;
+                    transform: scale(1.04);
+                }
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    // background-color: red;
+                    margin-right: 2px;
+                }
+                span {
+                    margin-top: -10px;
+                    font-size: 13px;
+                    font-weight: 800;
+                }
+            }
+        }
+    }
+
+    /*? ------------ Home img -s ---------------*/
+
+    .home_img {
+        // background-color: green;
+        // margin-left: 120px;
+        
+        width: 400px;
+        height: 400px;
+
+        animation: hover_anim 5s ease-in-out infinite;
+        img {
+            height: 100%;
+            width: 100%;
+            filter: drop-shadow(0px 10px 11px rgb(26, 25, 25));
+            
+        }
+    }
+}
+
+@keyframes hover_anim {
+    0% {
+        // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translatey(0px);
+    }
+
+    50% {
+        // box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+        transform: translatey(-20px);
+    }
+
+    100% {
+        // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translatey(0px);
+    }
+}
+
+@media (max-width: 550px) {
+    .home-cntr {
+
+        .home_txt {
+            .name_logo_bx {
+                // margin-right: 30px;
+                img {
+                    height: 90px;
+                    width: 350px;
+                }
+            }
+
+        }
+      
+        .home_img {
+            display: none;
+        }
+    }
+}

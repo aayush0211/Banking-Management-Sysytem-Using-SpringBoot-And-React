@@ -1,0 +1,68 @@
+body, html {
+    height: 100%;
+  }
+  .bg_welcome{
+    background-image: url("https://wallpapers.com/images/high/simple-pictures-ji15hict2osqzdhf.webp");
+    height: 70vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .bg_profile{
+    background-image: url("https://wallpapers.com/images/high/simple-pictures-ji15hict2osqzdhf.webp");
+    height: 80vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .bg_updateprofile{
+    background-image: url("https://wallpapers.com/images/high/simple-pictures-ji15hict2osqzdhf.webp");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .bg_moneytransfer{
+    background-image: url("https://wallpapers.com/images/high/simple-pictures-ji15hict2osqzdhf.webp");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .bg_cardtransaction{
+    background-image: url("https://wallpapers.com/images/high/simple-pictures-ji15hict2osqzdhf.webp");
+    height: 70vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .bg_addbranch {
+    background-image: url("https://wallpapers.com/images/high/simple-pictures-ji15hict2osqzdhf.webp");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .bg_adduser{
+    background-image: url("https://wallpapers.com/images/high/simple-pictures-ji15hict2osqzdhf.webp");
+    height: 130vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .bg_adminbranch{
+    background-image: url("https://wallpapers.com/images/high/simple-pictures-ji15hict2osqzdhf.webp");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .bg_branchlist{
+    background-image: url("https://wallpapers.com/images/high/simple-pictures-ji15hict2osqzdhf.webp");
+    height: 140vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  

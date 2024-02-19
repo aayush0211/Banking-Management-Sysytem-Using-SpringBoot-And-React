@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .row {
+    margin-bottom: 20px;
+  }
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .item {
+    float: left;
+    width: calc(33.3333% - 10px); /* Adjust width as per your requirement */
+    margin-right: 10px;
+  }
+
+  .item:last-child {
+    margin-right: 0;
+  }
+
+  .button-container {
+    text-align: center;
+  }
+
+  .submit-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
